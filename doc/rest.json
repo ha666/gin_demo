@@ -1,0 +1,458 @@
+[
+	{
+		"desc": "",
+		"index": 0,
+		"list": [
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e获取【项目表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 0,
+				"markdown": "```\n获取【项目表】信息\n```",
+				"method": "GET",
+				"path": "/projs/:id",
+				"query_path": {
+					"params": [],
+					"path": "/projs/:id"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_headers": [
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [
+					{
+						"desc": "项目编号",
+						"name": "id",
+						"required": "1"
+					}
+				],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"项目表\",\"properties\":{\"deleteStatus\":{\"description\":\"是否删除\",\"type\":\"integer\"},\"endTime\":{\"description\":\"结束时间\",\"type\":\"string\"},\"projId\":{\"description\":\"项目编号\",\"type\":\"integer\"},\"projName\":{\"description\":\"项目名称\",\"type\":\"string\"},\"realName\":{\"description\":\"姓名\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码\",\"type\":\"string\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"title": "获取【项目表】信息",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e获取【项目表】列表\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 1,
+				"markdown": "```\n获取【项目表】列表\n```",
+				"method": "GET",
+				"path": "/projs",
+				"query_path": {
+					"params": [],
+					"path": "/projs"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_headers": [
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [],
+				"req_query": [
+					{
+						"desc": "当前页码，从1开始，最大支持100000，默认是1。",
+						"name": "pageIndex",
+						"required": "0"
+					},
+					{
+						"desc": "每页记录数，从1开始，最大支持500，默认是15。",
+						"name": "pageSize",
+						"required": "0"
+					}
+				],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"项目表列表\",\"items\":{\"properties\":{\"deleteStatus\":{\"description\":\"是否删除\",\"type\":\"integer\"},\"endTime\":{\"description\":\"结束时间\",\"type\":\"string\"},\"projId\":{\"description\":\"项目编号\",\"type\":\"integer\"},\"projName\":{\"description\":\"项目名称\",\"type\":\"string\"},\"realName\":{\"description\":\"姓名\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码\",\"type\":\"string\"}},\"type\":\"object\"},\"required\":[],\"type\":\"array\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"title": "获取【项目表】列表",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e插入【项目表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 2,
+				"markdown": "```\n插入【项目表】信息\n```",
+				"method": "POST",
+				"path": "/projs",
+				"query_path": {
+					"params": [],
+					"path": "/projs"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_body_other": "{\"properties\":{\"endTime\":{\"description\":\"结束时间\",\"name\":\"endTime\",\"required\":\"1\",\"type\":\"string\"},\"projName\":{\"description\":\"项目名称\",\"name\":\"projName\",\"required\":\"1\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码\",\"name\":\"userCode\",\"required\":\"1\",\"type\":\"string\"}},\"required\":[\"projName\",\"userCode\",\"endTime\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"req_body_type": "json",
+				"req_headers": [
+					{
+						"name": "Content-Type",
+						"required": "1",
+						"value": "application/json"
+					},
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"项目表\",\"properties\":{\"projId\":{\"description\":\"项目编号\",\"type\":\"integer\"},\"result\":{\"description\":\"是否成功\",\"type\":\"boolean\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"tag": [],
+				"title": "插入【项目表】信息",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e修改【项目表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 3,
+				"markdown": "```\n修改【项目表】信息\n```",
+				"method": "PUT",
+				"path": "/projs/:id",
+				"query_path": {
+					"params": [],
+					"path": "/projs/:id"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_body_other": "{\"properties\":{\"endTime\":{\"description\":\"结束时间\",\"name\":\"endTime\",\"required\":\"1\",\"type\":\"string\"},\"projId\":{\"description\":\"项目编号\",\"name\":\"projId\",\"required\":\"1\",\"type\":\"integer\"},\"projName\":{\"description\":\"项目名称\",\"name\":\"projName\",\"required\":\"1\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码\",\"name\":\"userCode\",\"required\":\"1\",\"type\":\"string\"}},\"required\":[\"projId\",\"projName\",\"userCode\",\"endTime\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"req_body_type": "json",
+				"req_headers": [
+					{
+						"name": "Content-Type",
+						"required": "1",
+						"value": "application/json"
+					},
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [
+					{
+						"desc": "项目编号",
+						"name": "id",
+						"required": "1"
+					}
+				],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"项目表\",\"properties\":{\"result\":{\"description\":\"是否成功\",\"type\":\"boolean\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"tag": [],
+				"title": "修改【项目表】信息",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e删除【项目表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 4,
+				"markdown": "```\n删除【项目表】信息\n```",
+				"method": "DELETE",
+				"path": "/projs/:id",
+				"query_path": {
+					"params": [],
+					"path": "/projs/:id"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_headers": [
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [
+					{
+						"desc": "项目编号",
+						"name": "id",
+						"required": "1"
+					}
+				],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"项目表\",\"properties\":{\"result\":{\"description\":\"是否成功\",\"type\":\"boolean\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"tag": [],
+				"title": "删除【项目表】信息",
+				"type": "static"
+			}
+		],
+		"name": "项目表"
+	},
+	{
+		"desc": "",
+		"index": 1,
+		"list": [
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e获取【用户信息表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 0,
+				"markdown": "```\n获取【用户信息表】信息\n```",
+				"method": "GET",
+				"path": "/users/:id",
+				"query_path": {
+					"params": [],
+					"path": "/users/:id"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_headers": [
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [
+					{
+						"desc": "用户编码，取自钉钉编码",
+						"name": "id",
+						"required": "1"
+					}
+				],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"用户信息表\",\"properties\":{\"avatar\":{\"description\":\"头像url\",\"type\":\"string\"},\"createTime\":{\"description\":\"创建时间\",\"type\":\"string\"},\"deleteStatus\":{\"description\":\"删除状态，0未知，1未删除，2删除\",\"type\":\"integer\"},\"gender\":{\"description\":\"性别，0未知，1男，2女\",\"type\":\"integer\"},\"hiredDate\":{\"description\":\"入职时间\",\"type\":\"string\"},\"jobNumber\":{\"description\":\"员工的工号\",\"type\":\"string\"},\"jobPosition\":{\"description\":\"职位信息\",\"type\":\"string\"},\"realName\":{\"description\":\"姓名\",\"type\":\"string\"},\"updateTime\":{\"description\":\"修改时间\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码，取自钉钉编码\",\"type\":\"string\"},\"userType\":{\"description\":\"用户类型\",\"type\":\"integer\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"title": "获取【用户信息表】信息",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e获取【用户信息表】列表\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 1,
+				"markdown": "```\n获取【用户信息表】列表\n```",
+				"method": "GET",
+				"path": "/users",
+				"query_path": {
+					"params": [],
+					"path": "/users"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_headers": [
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [],
+				"req_query": [
+					{
+						"desc": "当前页码，从1开始，最大支持100000，默认是1。",
+						"name": "pageIndex",
+						"required": "0"
+					},
+					{
+						"desc": "每页记录数，从1开始，最大支持500，默认是15。",
+						"name": "pageSize",
+						"required": "0"
+					},
+					{
+						"desc": "部分【姓名】",
+						"name": "likeRealName",
+						"required": "0"
+					},
+					{
+						"desc": "员工的工号",
+						"name": "jobNumber",
+						"required": "0"
+					},
+					{
+						"desc": "职位信息",
+						"name": "jobPosition",
+						"required": "0"
+					},
+					{
+						"desc": "用户类型",
+						"name": "userType",
+						"required": "1"
+					},
+					{
+						"desc": "开始【创建时间】",
+						"name": "startCreateTime",
+						"required": "0"
+					},
+					{
+						"desc": "结束【创建时间】",
+						"name": "endCreateTime",
+						"required": "0"
+					}
+				],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"用户信息表列表\",\"items\":{\"properties\":{\"avatar\":{\"description\":\"头像url\",\"type\":\"string\"},\"createTime\":{\"description\":\"创建时间\",\"type\":\"string\"},\"deleteStatus\":{\"description\":\"删除状态，0未知，1未删除，2删除\",\"type\":\"integer\"},\"gender\":{\"description\":\"性别，0未知，1男，2女\",\"type\":\"integer\"},\"hiredDate\":{\"description\":\"入职时间\",\"type\":\"string\"},\"jobNumber\":{\"description\":\"员工的工号\",\"type\":\"string\"},\"jobPosition\":{\"description\":\"职位信息\",\"type\":\"string\"},\"realName\":{\"description\":\"姓名\",\"type\":\"string\"},\"updateTime\":{\"description\":\"修改时间\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码，取自钉钉编码\",\"type\":\"string\"},\"userType\":{\"description\":\"用户类型\",\"type\":\"integer\"}},\"type\":\"object\"},\"required\":[],\"type\":\"array\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"title": "获取【用户信息表】列表",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e插入【用户信息表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 2,
+				"markdown": "```\n插入【用户信息表】信息\n```",
+				"method": "POST",
+				"path": "/users",
+				"query_path": {
+					"params": [],
+					"path": "/users"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_body_other": "{\"properties\":{\"avatar\":{\"description\":\"头像url\",\"name\":\"avatar\",\"required\":\"1\",\"type\":\"string\"},\"gender\":{\"description\":\"性别，0未知，1男，2女\",\"name\":\"gender\",\"required\":\"1\",\"type\":\"integer\"},\"hiredDate\":{\"description\":\"入职时间\",\"name\":\"hiredDate\",\"required\":\"1\",\"type\":\"string\"},\"jobNumber\":{\"description\":\"员工的工号\",\"name\":\"jobNumber\",\"required\":\"1\",\"type\":\"string\"},\"jobPosition\":{\"description\":\"职位信息\",\"name\":\"jobPosition\",\"required\":\"1\",\"type\":\"string\"},\"realName\":{\"description\":\"姓名\",\"name\":\"realName\",\"required\":\"1\",\"type\":\"string\"},\"userType\":{\"description\":\"用户类型\",\"name\":\"userType\",\"required\":\"1\",\"type\":\"integer\"}},\"required\":[\"realName\",\"jobNumber\",\"jobPosition\",\"hiredDate\",\"avatar\",\"gender\",\"userType\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"req_body_type": "json",
+				"req_headers": [
+					{
+						"name": "Content-Type",
+						"required": "1",
+						"value": "application/json"
+					},
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"用户信息表\",\"properties\":{\"result\":{\"description\":\"是否成功\",\"type\":\"boolean\"},\"userCode\":{\"description\":\"用户编码，取自钉钉编码\",\"type\":\"integer\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"tag": [],
+				"title": "插入【用户信息表】信息",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e修改【用户信息表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 3,
+				"markdown": "```\n修改【用户信息表】信息\n```",
+				"method": "PUT",
+				"path": "/users/:id",
+				"query_path": {
+					"params": [],
+					"path": "/users/:id"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_body_other": "{\"properties\":{\"avatar\":{\"description\":\"头像url\",\"name\":\"avatar\",\"required\":\"1\",\"type\":\"string\"},\"gender\":{\"description\":\"性别，0未知，1男，2女\",\"name\":\"gender\",\"required\":\"1\",\"type\":\"integer\"},\"hiredDate\":{\"description\":\"入职时间\",\"name\":\"hiredDate\",\"required\":\"1\",\"type\":\"string\"},\"jobNumber\":{\"description\":\"员工的工号\",\"name\":\"jobNumber\",\"required\":\"1\",\"type\":\"string\"},\"jobPosition\":{\"description\":\"职位信息\",\"name\":\"jobPosition\",\"required\":\"1\",\"type\":\"string\"},\"realName\":{\"description\":\"姓名\",\"name\":\"realName\",\"required\":\"1\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码，取自钉钉编码\",\"name\":\"userCode\",\"required\":\"1\",\"type\":\"string\"},\"userType\":{\"description\":\"用户类型\",\"name\":\"userType\",\"required\":\"1\",\"type\":\"integer\"}},\"required\":[\"userCode\",\"realName\",\"jobNumber\",\"jobPosition\",\"hiredDate\",\"avatar\",\"gender\",\"userType\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"req_body_type": "json",
+				"req_headers": [
+					{
+						"name": "Content-Type",
+						"required": "1",
+						"value": "application/json"
+					},
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [
+					{
+						"desc": "用户编码，取自钉钉编码",
+						"name": "id",
+						"required": "1"
+					}
+				],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"用户信息表\",\"properties\":{\"result\":{\"description\":\"是否成功\",\"type\":\"boolean\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"tag": [],
+				"title": "修改【用户信息表】信息",
+				"type": "static"
+			},
+			{
+				"__v": 0,
+				"api_opened": false,
+				"desc": "\u003cpre\u003e\u003ccode\u003e删除【用户信息表】信息\u003c/code\u003e\u003c/pre\u003e",
+				"edit_uid": 0,
+				"index": 4,
+				"markdown": "```\n删除【用户信息表】信息\n```",
+				"method": "DELETE",
+				"path": "/users/:id",
+				"query_path": {
+					"params": [],
+					"path": "/users/:id"
+				},
+				"req_body_form": [],
+				"req_body_is_json_schema": true,
+				"req_headers": [
+					{
+						"desc": "jwt的值",
+						"name": "Authorization",
+						"required": "1",
+						"value": "Bearer jwt的值"
+					}
+				],
+				"req_params": [
+					{
+						"desc": "用户编码，取自钉钉编码",
+						"name": "id",
+						"required": "1"
+					}
+				],
+				"req_query": [],
+				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"用户信息表\",\"properties\":{\"result\":{\"description\":\"是否成功\",\"type\":\"boolean\"}},\"required\":[],\"type\":\"object\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",
+				"res_body_is_json_schema": true,
+				"res_body_type": "json",
+				"status": "done",
+				"tag": [],
+				"title": "删除【用户信息表】信息",
+				"type": "static"
+			}
+		],
+		"name": "用户信息表"
+	}
+]

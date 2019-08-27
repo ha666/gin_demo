@@ -1,0 +1,10 @@
+db:
+  dsn: root:%s@tcp(test.abc.red:3306)/ha666db?charset=utf8&parseTime=true&loc=Asia%%2fShanghai
+  db_name: ha666db
+  maxidle_conn: 5
+  maxopen_conn: 100
+  pwd: "1234567890"
+app:
+  jwt:
+    secret: 60v@6Wy~Y-4$OTEwS76yCqYml6KzHn0x
+port: 9090
