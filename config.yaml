@@ -6,5 +6,5 @@ db:
   pwd: "1234567890"
 app:
   jwt:
-    secret: 60v@6Wy~Y-4$OTEwS76yCqYml6KzHn0x
+    secret: G8IFWoOd!m9N8RCNUn?%WeH-f_3HNGQl
 port: 9090

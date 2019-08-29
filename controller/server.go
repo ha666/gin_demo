@@ -13,10 +13,10 @@ import (
 // 启动服务
 func Start() {
 
-	//初始化Service
+	//region 始始化Service
 	{
-		user.Init()
 		proj.Init()
+		user.Init()
 	}
 	//endregion
 
@@ -47,6 +47,7 @@ func Start() {
 				projNode.GET(":id", proj.GetProjInfo)
 				projNode.POST("", proj.InsertProjInfo)
 				projNode.PUT(":id", proj.UpdateProjInfo)
+				projNode.DELETE(":id", proj.DeleteProjInfo)
 			}
 			//endregion
 
@@ -57,6 +58,7 @@ func Start() {
 				userNode.GET(":id", user.GetUserInfo)
 				userNode.POST("", user.InsertUserInfo)
 				userNode.PUT(":id", user.UpdateUserInfo)
+				userNode.DELETE(":id", user.DeleteUserInfo)
 			}
 			//endregion
 

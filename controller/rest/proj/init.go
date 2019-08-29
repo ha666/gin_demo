@@ -1,6 +1,8 @@
 package proj
 
-import "github.com/ha666/gin_demo/service"
+import (
+	"github.com/ha666/gin_demo/service"
+)
 
 var (
 	projService *service.ProjService

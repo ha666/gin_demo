@@ -10,22 +10,40 @@ import (
 
 type UserService struct {
 	UserDao *dao.UserDao
+	ProjDao *dao.ProjDao
 }
 
 func NewUserService() *UserService {
 	return &UserService{
 		UserDao: dao.NewUserDao(),
+		ProjDao: dao.NewProjDao(),
 	}
 }
 
 // 获取【用户信息表】信息
 func (d *UserService) GetUserInfo(userCode string) (user model.User, err error) {
-	return d.UserDao.Get(userCode)
+
+	//region 查询【用户信息表】信息
+	user, err = d.UserDao.Get(userCode)
+	if err != nil {
+		return
+	}
+	//endregion
+
+	return
 }
 
 // 根据【用户编码，取自钉钉编码】查询【用户信息表】信息
 func (d *UserService) GetUserInfoByUserCode(userCode string) (user model.User, err error) {
-	return d.UserDao.GetByUserCode(userCode)
+
+	//region 查询【用户信息表】信息
+	user, err = d.UserDao.GetByUserCode(userCode)
+	if err != nil {
+		return
+	}
+	//endregion
+
+	return
 }
 
 // 根据【用户编码，取自钉钉编码】批量获取【用户信息表】列表
@@ -217,6 +235,42 @@ func (d *UserService) Update(userCode string, realName string, jobNumber string,
 
 	//region 修改【用户信息表】信息
 	return d.UserDao.Update(&userInfo)
+	//endregion
+
+}
+
+//删除【用户信息表】信息
+func (d *UserService) Delete(userCode string) (isSuccess bool, err error) {
+
+	//region 根据【用户编码】查询【项目表】总数
+	{
+		count, err := d.ProjDao.GetRowCountByUserCode(userCode)
+		if err != nil {
+			return false, errors.New("查询【项目表】总数出错:" + err.Error())
+		}
+		if count > 0 {
+			return false, errors.New("【项目表】存在相关记录")
+		}
+	}
+	//endregion
+
+	//region 查询【用户信息表】信息
+	{
+		userInfo, err := d.UserDao.Get(userCode)
+		if err != nil {
+			return false, errors.New("查询【用户信息表】信息出错:" + err.Error())
+		}
+		if golibs.Length(userInfo.UserCode) <= 0 {
+			return false, errors.New("没有找到【用户信息表】信息")
+		}
+		if userInfo.DeleteStatus != 1 {
+			return false, errors.New("【用户信息表】信息已被删除")
+		}
+	}
+	//endregion
+
+	//region 删除【用户信息表】信息
+	return d.UserDao.Delete(userCode)
 	//endregion
 
 }

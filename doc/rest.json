@@ -75,6 +75,16 @@
 						"desc": "每页记录数，从1开始，最大支持500，默认是15。",
 						"name": "pageSize",
 						"required": "0"
+					},
+					{
+						"desc": "部分【项目名称】",
+						"name": "likeProjName",
+						"required": "0"
+					},
+					{
+						"desc": "用户编码",
+						"name": "userCode",
+						"required": "0"
 					}
 				],
 				"res_body": "{\"properties\":{\"code\":{\"description\":\"错误码，成功为\\\"ok\\\"\",\"type\":\"string\"},\"data\":{\"description\":\"项目表列表\",\"items\":{\"properties\":{\"deleteStatus\":{\"description\":\"是否删除\",\"type\":\"integer\"},\"endTime\":{\"description\":\"结束时间\",\"type\":\"string\"},\"projId\":{\"description\":\"项目编号\",\"type\":\"integer\"},\"projName\":{\"description\":\"项目名称\",\"type\":\"string\"},\"realName\":{\"description\":\"姓名\",\"type\":\"string\"},\"userCode\":{\"description\":\"用户编码\",\"type\":\"string\"}},\"type\":\"object\"},\"required\":[],\"type\":\"array\"},\"message\":{\"description\":\"错误信息\",\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"title\":\"empty object\",\"type\":\"object\"}",

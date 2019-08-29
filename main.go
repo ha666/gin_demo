@@ -9,7 +9,7 @@ import (
 	"runtime"
 )
 
-const VERSION = "2019.827.1351"
+const VERSION = "2019.829.1050"
 
 func init() {
 

@@ -164,13 +164,39 @@ func (d *ProjDao) GetRowListByProjName(projName string, PageIndex, PageSize int)
 	return d._RowsToArray(rows)
 }
 
-// 查询【项目表】表总记录数
-func (d *ProjDao) GetRowCount() (count int, err error) {
+// 查询【项目表】表总记录数,使用条件：部分【项目名称】,【用户编码】
+func (d *ProjDao) GetRowCount(likeProjName string, userCode string) (count int, err error) {
 	sqlString := golibs.NewStringBuilder()
 	params := make([]interface{}, 0)
 	conditions := 0
 
 	sqlString.Append("select /*+ MAX_EXECUTION_TIME(5000) */ count(0) Count from proj")
+
+	//region 处理likeProjName
+	if golibs.Length(likeProjName) > 0 {
+		if conditions > 0 {
+			sqlString.Append(" and ")
+		} else {
+			sqlString.Append(" where ")
+		}
+		sqlString.Append("projName like ?")
+		params = append(params, "%"+likeProjName+"%")
+		conditions++
+	}
+	//endregion
+
+	//region 处理userCode
+	if golibs.Length(userCode) > 0 {
+		if conditions > 0 {
+			sqlString.Append(" and ")
+		} else {
+			sqlString.Append(" where ")
+		}
+		sqlString.Append("userCode=?")
+		params = append(params, userCode)
+		conditions++
+	}
+	//endregion
 
 	//region 处理deleteStatus
 	if conditions > 0 {
@@ -216,13 +242,39 @@ func (d *ProjDao) GetRowCountByUserCode(userCode string) (count int, err error) 
 	return -1, err
 }
 
-// 查询【项目表】列表
-func (d *ProjDao) GetRowList(pageIndex, pageSize int) (projs []model.Proj, err error) {
+// 查询【项目表】列表,使用条件：部分【项目名称】,【用户编码】
+func (d *ProjDao) GetRowList(likeProjName string, userCode string, pageIndex, pageSize int) (projs []model.Proj, err error) {
 	sqlString := golibs.NewStringBuilder()
 	params := make([]interface{}, 0)
 	conditions := 0
 
 	sqlString.Append("select /*+ MAX_EXECUTION_TIME(5000) */ projId, projName, userCode, deleteStatus, endTime from proj")
+
+	//region 处理likeProjName
+	if golibs.Length(likeProjName) > 0 {
+		if conditions > 0 {
+			sqlString.Append(" and ")
+		} else {
+			sqlString.Append(" where ")
+		}
+		sqlString.Append("projName like ?")
+		params = append(params, "%"+likeProjName+"%")
+		conditions++
+	}
+	//endregion
+
+	//region 处理userCode
+	if golibs.Length(userCode) > 0 {
+		if conditions > 0 {
+			sqlString.Append(" and ")
+		} else {
+			sqlString.Append(" where ")
+		}
+		sqlString.Append("userCode=?")
+		params = append(params, userCode)
+		conditions++
+	}
+	//endregion
 
 	//region 处理deleteStatus
 	if conditions > 0 {

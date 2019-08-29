@@ -151,17 +151,17 @@ func (d *ProjService) GetProjListByProjName(projName string, pageIndex, pageSize
 }
 
 // 分页查询【项目表】列表
-func (d *ProjService) GetProjList(pageIndex, pageSize int) (projs []model.Proj, count int, err error) {
+func (d *ProjService) GetProjList(likeProjName string, userCode string, pageIndex, pageSize int) (projs []model.Proj, count int, err error) {
 
 	//region 查询总数
-	count, err = d.ProjDao.GetRowCount()
+	count, err = d.ProjDao.GetRowCount(likeProjName, userCode)
 	if err != nil || count <= 0 {
 		return
 	}
 	//endregion
 
 	//region 查询列表
-	projs, err = d.ProjDao.GetRowList(pageIndex, pageSize)
+	projs, err = d.ProjDao.GetRowList(likeProjName, userCode, pageIndex, pageSize)
 	if err != nil {
 		return
 	}
@@ -297,6 +297,30 @@ func (d *ProjService) Update(projId int, projName string, userCode string, endTi
 
 	//region 修改【项目表】信息
 	return d.ProjDao.Update(&projInfo)
+	//endregion
+
+}
+
+//删除【项目表】信息
+func (d *ProjService) Delete(projId int) (isSuccess bool, err error) {
+
+	//region 查询【项目表】信息
+	{
+		projInfo, err := d.ProjDao.Get(projId)
+		if err != nil {
+			return false, errors.New("查询【项目表】信息出错:" + err.Error())
+		}
+		if projInfo.ProjId <= 0 {
+			return false, errors.New("没有找到【项目表】信息")
+		}
+		if projInfo.DeleteStatus != 1 {
+			return false, errors.New("【项目表】信息已被删除")
+		}
+	}
+	//endregion
+
+	//region 删除【项目表】信息
+	return d.ProjDao.Delete(projId)
 	//endregion
 
 }

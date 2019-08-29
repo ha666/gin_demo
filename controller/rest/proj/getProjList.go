@@ -21,6 +21,12 @@ type getProjListRequest struct {
 	// 每页记录数
 	pageSize    string
 	pageSizeInt int
+
+	// 部分-项目名称
+	likeProjName string
+
+	// 用户编码
+	userCode string
 }
 
 // 方法
@@ -98,8 +104,48 @@ func GetProjList(c *gin.Context) {
 	}
 	//endregion
 
+	//region 验证部分【项目名称】参数,可选
+	request.likeProjName = c.DefaultQuery("likeProjName", "")
+	if golibs.Length(request.likeProjName) > 0 {
+		if !golibs.IsHanOrLetterOrNumber(request.likeProjName) {
+			c.JSON(http.StatusOK, model.Response{
+				Code:    "proj.GetProjList.likeProjName format err",
+				Message: "部分【项目名称】参数格式不正确",
+			})
+			return
+		}
+		if golibs.Length(request.likeProjName) > 32 {
+			c.JSON(http.StatusOK, model.Response{
+				Code:    "proj.GetProjList.likeProjName length err",
+				Message: "部分【项目名称】参数长度不能超过32个字符",
+			})
+			return
+		}
+	}
+	//endregion
+
+	//region 验证【用户编码】参数,可选
+	request.userCode = c.DefaultQuery("userCode", "")
+	if golibs.Length(request.userCode) > 0 {
+		if !golibs.IsLetterOrNumber1(request.userCode) {
+			c.JSON(http.StatusOK, model.Response{
+				Code:    "proj.GetProjList.userCode format err",
+				Message: "【用户编码】参数格式不正确",
+			})
+			return
+		}
+		if golibs.Length(request.userCode) > 32 {
+			c.JSON(http.StatusOK, model.Response{
+				Code:    "proj.GetProjList.userCode length err",
+				Message: "【用户编码】参数长度不能超过32个字符",
+			})
+			return
+		}
+	}
+	//endregion
+
 	//region 查询【项目表】列表
-	list, total, err := projService.GetProjList(request.pageIndexInt, request.pageSizeInt)
+	list, total, err := projService.GetProjList(request.likeProjName, request.userCode, request.pageIndexInt, request.pageSizeInt)
 	if err != nil {
 		c.JSON(http.StatusOK, model.Response{
 			Code:    "proj.GetProjList.query err",
